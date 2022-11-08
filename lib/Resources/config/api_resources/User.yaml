@@ -1,0 +1,38 @@
+resources:
+    '%vs_users.model.users.class%':
+        shortName: 'User'
+        
+        collectionOperations:
+            users_get:
+                method: GET
+                path: users
+                normalization_context:
+                    groups: ['admin:user:read']
+            users_post:
+                method: POST
+                path: users/new
+                normalization_context:
+                    groups: ['admin:user:create']
+            users_put:
+                method: POST
+                path: users/update
+                normalization_context:
+                    groups: ['admin:user:update']
+        itemOperations:
+            users_get:
+                method: GET
+                path: users/{id}
+                normalization_context:
+                    groups: ['admin:user:read']
+                    
+        properties:
+            id:
+                identifier: true
+                writeable: false
+                required: false
+            username:
+                identifier: false
+                writeable: true
+                required: true
+
+

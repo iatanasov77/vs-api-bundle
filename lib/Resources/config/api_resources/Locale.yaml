@@ -1,0 +1,47 @@
+resources:
+    '%vs_application.model.locale.class%':
+        shortName: 'Locale'
+        
+        collectionOperations:
+            locales_get:
+                method: GET
+                path: admin/locales
+                normalization_context:
+                    groups: ['admin:locale:read']
+            locales_post:
+                method: POST
+                path: admin/locales/new
+                normalization_context:
+                    groups: ['admin:locale:create']
+            locales_put:
+                method: POST
+                path: admin/locales/update
+                normalization_context:
+                    groups: ['admin:locale:update']
+        itemOperations:
+            locales_get:
+                method: GET
+                path: admin/locales/{id}
+                normalization_context:
+                    groups: ['admin:locale:read']
+                    
+        properties:
+            id:
+                identifier: false
+                writeable: false
+                required: false
+            code:
+                identifier: true
+                required: true
+            title:
+                identifier: false
+                writeable: true
+                required: true
+            createdAt:
+                identifier: false
+                writeable: false
+            updatedAt:
+                identifier: false
+                writeable: false
+
+

@@ -1,0 +1,10 @@
+imports:
+    - { resource: services/security.yml }
+    
+services:
+    vankosoft.api.property_info.extractor.empty_list_extractor:
+        class: Vankosoft\ApiBundle\PropertyInfo\Extractor\EmptyPropertyListExtractor
+        tags:
+            - { name: 'property_info.list_extractor', priority: -2000 }
+
+
