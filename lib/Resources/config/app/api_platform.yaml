@@ -22,28 +22,4 @@ api_platform:
     swagger:
         versions: [3]
 
-framework:
-    serializer:
-        enabled: true
-        mapping:
-            paths:
-                - '%kernel.project_dir%/config/api_platform/serialization/'
-                
-lexik_jwt_authentication:
-    secret_key: '%env(resolve:JWT_SECRET_KEY)%'
-    public_key: '%env(resolve:JWT_PUBLIC_KEY)%'
-    pass_phrase: '%env(JWT_PASSPHRASE)%'
-
-
-nelmio_cors:
-    defaults:
-        origin_regex: true
-        allow_origin: ['*']
-        allow_methods: ['GET', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE']
-        allow_headers: ['Content-Type', 'Authorization']
-        expose_headers: ['Link']
-        max_age: 3600
-    paths:
-        '^/': null
-
 
