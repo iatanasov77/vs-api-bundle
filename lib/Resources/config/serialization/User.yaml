@@ -1,0 +1,10 @@
+Vankosoft\UsersBundle\Model\User:
+    attributes:
+        id:
+            groups: ['admin:user:read']
+        email:
+            groups: ['admin:user:read']
+        username:
+            groups: ['admin:user:read']
+
+

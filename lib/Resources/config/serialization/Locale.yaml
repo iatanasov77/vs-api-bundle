@@ -1,0 +1,10 @@
+Vankosoft\ApplicationBundle\Model\Locale:
+    attributes:
+        id:
+            groups: ['admin:locale:read']
+        code:
+            groups: ['admin:locale:read']
+        title:
+            groups: ['admin:locale:read']
+
+
