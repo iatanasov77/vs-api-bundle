@@ -1,0 +1,25 @@
+# https://api-platform.com/docs/core/configuration/
+##########################################################
+api_platform:
+    title: 'SoftUni API'
+    description: 'API for SoftUni FrontEnd Projects'
+    version: '0.0.1'  # The version of the API.
+    
+    enable_docs: true
+    show_webby: false
+    
+    # Disabling the displaying of the API documentation 
+    enable_swagger_ui: false
+    enable_re_doc: false
+    
+    mapping:
+        paths:
+          - '%kernel.project_dir%/src/Entity'
+          - '%kernel.project_dir%/config/api_platform/api_resources'
+          
+    patch_formats:
+        json: ['application/merge-patch+json']
+    swagger:
+        versions: [3]
+
+
