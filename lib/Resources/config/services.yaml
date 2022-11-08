@@ -1,5 +1,5 @@
 imports:
-    - { resource: services/security.yml }
+    - { resource: services/security.yaml }
     
 services:
     vankosoft.api.property_info.extractor.empty_list_extractor:
