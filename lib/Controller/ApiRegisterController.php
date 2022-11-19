@@ -60,10 +60,16 @@ class ApiRegisterController extends AbstractController
         $this->params               = $parameters;
     }
     
-    public function register( Request $request ): UserInterface
+    public function  __invoke( Request $request ): UserInterface
     {
+        // $request->get( "token" )
         $requestBody    = \json_decode( $request->getContent(), true );
         
+        return $this->register( $requestBody, $request->getLocale() );
+    }
+    
+    public function register( array $requestBody, string $preferedLocale ): UserInterface
+    {
         $em             = $this->doctrine->getManager();
         $oUser          = $this->userManager->createUser(
             $requestBody['username'],
@@ -73,11 +79,9 @@ class ApiRegisterController extends AbstractController
         return $oUser;
         
         //$oUser->setApiToken( $this->tokenGenerator->createToken( strval( time() ), $oUser->getEmail() ) );
-        
-        //$oUser->setRoles( [$request->request->get( 'registerRole' )] );
         $oUser->addRole( $this->userRolesRepository->findByTaxonCode( $this->params['registerRole'] ) );
         
-        $oUser->setPreferedLocale( $request->getLocale() );
+        $oUser->setPreferedLocale( $preferedLocale );
         $oUser->setVerified( true );
         $oUser->setEnabled( true );
         
