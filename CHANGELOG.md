@@ -1,3 +1,9 @@
+1.2.1	|	Release date: **19.11.2022**
+============================================
+* New Features:
+  - Update JWT Authentication Success Response.
+
+
 1.2.0	|	Release date: **19.11.2022**
 ============================================
 * New Features:
