@@ -10,10 +10,12 @@ services:
         arguments:
             - '@vs_users.repository.users'
             
-    vs_api.jwt_authenticated_listener:
-        class: Vankosoft\ApiBundle\Security\JWTAuthenticatedListener
+    vs_api.jwt_created_listener:
+        class: Vankosoft\ApiBundle\Security\JWTCreatedListener
+        arguments:
+            - '@request_stack'
         tags:
-            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_authenticated, method: onJWTAuthenticated }
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
             
     vs_api.jwt_authentication_success_listener:
         class: Vankosoft\ApiBundle\Security\JwtAuthenticationSuccessListener
