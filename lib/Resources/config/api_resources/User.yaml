@@ -20,6 +20,7 @@ resources:
                     groups: ['admin:user:update']
         itemOperations:
             users_register:
+                read: false # Disable ReadListener
                 write: false
                 serialize: false
                 method: POST
