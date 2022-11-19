@@ -96,6 +96,9 @@ class ApiRegisterController extends AbstractController
         $oUser->setVerified( true );
         $oUser->setEnabled( true );
         
+        $oUser->getInfo()->setFirstName( $requestBody['firstName'] );
+        $oUser->getInfo()->setLastName( $requestBody['lastName'] );
+        
         $em->persist( $oUser );
         $em->flush();
         
