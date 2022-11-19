@@ -3,7 +3,7 @@
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 use Vankosoft\UsersBundle\Model\User;
 
