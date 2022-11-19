@@ -70,6 +70,7 @@ class ApiRegisterController extends AbstractController
         return new JsonResponse([
             'status'    => Status::STATUS_OK,
             'data'      => $createdUser,
+            'debug'     => $requestBody,
         ]);
     }
     
