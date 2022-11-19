@@ -22,7 +22,7 @@ services:
         arguments: 
             - '@doctrine.orm.entity_manager'
         tags:
-            - { name: 'kernel.event_listener', event: 'lexik_jwt_authentication.on_authentication_success', method: 'onAuthenticationSuccess' }
+            - { name: 'kernel.event_listener', event: 'lexik_jwt_authentication.on_authentication_success', method: 'onAuthenticationSuccessResponse' }
             
     vs_api.api_manager:
         class: Vankosoft\ApiBundle\Security\ApiManager
