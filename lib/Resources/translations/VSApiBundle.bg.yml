@@ -1,0 +1,5 @@
+vs_api:
+    messages:
+        register_success: 'Потребителят е Регистриран Успешно !'
+
+

@@ -5,6 +5,7 @@ use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Resource\Factory\Factory;
@@ -39,6 +40,9 @@ class ApiRegisterController extends AbstractController
     /** @var ManagerRegistry */
     protected ManagerRegistry $doctrine;
     
+    // TranslatorInterface
+    protected $translator;
+    
     /**
      * @var array
      */
@@ -50,6 +54,7 @@ class ApiRegisterController extends AbstractController
         RepositoryInterface $usersRepository,
         Factory $usersFactory,
         RepositoryInterface $userRolesRepository,
+        TranslatorInterface $translator,
         array $parameters
     ) {
         $this->doctrine             = $doctrine;
@@ -57,6 +62,7 @@ class ApiRegisterController extends AbstractController
         $this->usersRepository      = $usersRepository;
         $this->usersFactory         = $usersFactory;
         $this->userRolesRepository  = $userRolesRepository;
+        $this->translator           = $translator;
         $this->params               = $parameters;
     }
     
@@ -69,8 +75,8 @@ class ApiRegisterController extends AbstractController
         
         return new JsonResponse([
             'status'    => Status::STATUS_OK,
+            'message'   => $this->translator->trans( 'vs_api.messages.register_success', [], 'VSApiBundle' ),
             'data'      => $createdUser,
-            'debug'     => $requestBody,
         ]);
     }
     
@@ -82,7 +88,6 @@ class ApiRegisterController extends AbstractController
             $requestBody['email'],
             $requestBody['password'],   // $plainPassword
         );
-        return $oUser;
         
         //$oUser->setApiToken( $this->tokenGenerator->createToken( strval( time() ), $oUser->getEmail() ) );
         $oUser->addRole( $this->userRolesRepository->findByTaxonCode( $this->params['registerRole'] ) );
