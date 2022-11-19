@@ -25,7 +25,6 @@ class JwtAuthenticationSuccessListener
      */
     public function onAuthenticationSuccessResponse( AuthenticationSuccessEvent $event ): void
     {
-        $data = $event->getData();
         $user = $event->getUser();
         
         if ( ! $user instanceof UserInterface ) {
@@ -54,10 +53,13 @@ class JwtAuthenticationSuccessListener
     
     private function modifyResponse( UserInterface $user,  AuthenticationSuccessEvent &$event ): void
     {
-        $status                 = $event->getResponse()->getStatusCode() == 200 ? Status::STATUS_OK : Status::STATUS_ERROR;
-        $payload                = $event->getData();
-        $payload['userName']    = $user->getInfo()->getFullName();
+        $status                     = $event->getResponse()->getStatusCode() == 200 ? Status::STATUS_OK : Status::STATUS_ERROR;
+        $payload                    = $event->getData();
+        
+        $payload['userId']          = $user->getId();
+        $payload['userFullName']    = $user->getInfo()->getFullName();
         //$payload['userRoles']   = $user->getRoles();
+        
         $event->setData([
             'status'    => $status,
             'payload'   => $payload,
