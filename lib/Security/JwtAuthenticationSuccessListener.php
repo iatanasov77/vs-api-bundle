@@ -3,6 +3,8 @@
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationFailureEvent;
 use Doctrine\ORM\EntityManager;
+
+use Vankosoft\ApplicationBundle\Component\Status;
 use Vankosoft\UsersBundle\Model\UserInterface;
 
 /**
@@ -30,17 +32,14 @@ class JwtAuthenticationSuccessListener
             return;
         }
         
+        /*
+         * May be this should not be here because it's called on every api request
+         */
         $user->setLastLogin( new \DateTime() );
         $this->entityManager->persist( $user );
         $this->entityManager->flush();
         
-        
-        
-        $event->setData([
-            'code'      => $event->getResponse()->getStatusCode(),
-            'payload'   => $event->getData(),
-        ]);
-        //$this->modifyResponse( $user, $event );
+        $this->modifyResponse( $user, $event );
     }
     
     /**
@@ -55,10 +54,13 @@ class JwtAuthenticationSuccessListener
     
     private function modifyResponse( UserInterface $user,  AuthenticationSuccessEvent &$event ): void
     {
-        $data['data'] = [
-            'roles' => $user->getRoles(),
-        ];
-        
-        $event->setData( $data );
+        $status                 = $event->getResponse()->getStatusCode() == 200 ? Status::STATUS_OK : Status::STATUS_ERROR;
+        $payload                = $event->getData();
+        $payload['userName']    = $user->getInfo()->getFullName();
+        //$payload['userRoles']   = $user->getRoles();
+        $event->setData([
+            'status'    => $status,
+            'payload'   => $payload,
+        ]);
     }
 }
