@@ -22,7 +22,7 @@ resources:
             users_register:
                 read: false # Disable ReadListener
                 write: false
-                serialize: false
+                serialize: true
                 method: POST
                 path: users/register
                 controller: Vankosoft\ApiBundle\Controller\ApiRegisterController

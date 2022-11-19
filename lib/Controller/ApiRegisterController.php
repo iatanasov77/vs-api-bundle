@@ -60,12 +60,17 @@ class ApiRegisterController extends AbstractController
         $this->params               = $parameters;
     }
     
-    public function  __invoke( Request $request ): UserInterface
+    public function  __invoke( Request $request ): JsonResponse
     {
         // $request->get( "token" )
         $requestBody    = \json_decode( $request->getContent(), true );
         
-        return $this->register( $requestBody, $request->getLocale() );
+        $createdUser    = $this->register( $requestBody, $request->getLocale() );
+        
+        return new JsonResponse([
+            'status'    => Status::STATUS_OK,
+            'data'      => $createdUser,
+        ]);
     }
     
     public function register( array $requestBody, string $preferedLocale ): UserInterface
