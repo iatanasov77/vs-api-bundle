@@ -20,6 +20,8 @@ resources:
                     groups: ['admin:user:update']
         itemOperations:
             users_register:
+                write: false
+                serialize: false
                 method: POST
                 path: users/register
                 controller: Vankosoft\ApiBundle\Controller\ApiRegisterController
