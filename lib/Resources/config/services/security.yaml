@@ -10,12 +10,19 @@ services:
         arguments:
             - '@vs_users.repository.users'
             
+    vs_api.jwt_created_listener:
+        class: Vankosoft\ApiBundle\Security\JWTCreatedListener
+        arguments:
+            - '@request_stack'
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+            
     vs_api.jwt_authentication_success_listener:
         class: Vankosoft\ApiBundle\Security\JwtAuthenticationSuccessListener
         arguments: 
             - '@doctrine.orm.entity_manager'
         tags:
-            - { name: 'kernel.event_listener', event: 'lexik_jwt_authentication.on_authentication_success', method: 'onAuthenticationSuccess' }
+            - { name: 'kernel.event_listener', event: 'lexik_jwt_authentication.on_authentication_success', method: 'onAuthenticationSuccessResponse' }
             
     vs_api.api_manager:
         class: Vankosoft\ApiBundle\Security\ApiManager
@@ -28,5 +35,18 @@ services:
         arguments:
             - '@vs_api.api_manager'
             - '@vs_users.repository.users'
+            
+    Vankosoft\ApiBundle\Controller\ApiRegisterController:
+        tags: ['controller.service_arguments']
+        arguments:
+            - '@doctrine'
+            - '@vs_users.manager.user'
+            - '@vs_users.repository.users'
+            - '@vs_users.factory.users'
+            - '@vs_users.repository.user_roles'
+            - '@translator'
+            - {
+                registerRole: '%vs_users.register_role%'
+            }
 
 

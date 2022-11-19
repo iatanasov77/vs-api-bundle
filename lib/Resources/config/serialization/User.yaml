@@ -2,9 +2,19 @@ Vankosoft\UsersBundle\Model\User:
     attributes:
         id:
             groups: ['admin:user:read']
+        info:
+            groups: ['admin:user:read']
         email:
             groups: ['admin:user:read']
         username:
             groups: ['admin:user:read']
 
+Vankosoft\UsersBundle\Model\UserInfo:
+    attributes:
+        user:
+            groups: ['admin:user:read']
+        firstName:
+            groups: ['admin:user:read']
+        lastName:
+            groups: ['admin:user:read']
 
