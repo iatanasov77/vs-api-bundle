@@ -19,11 +19,18 @@ resources:
                 normalization_context:
                     groups: ['admin:user:update']
         itemOperations:
+            users_register:
+                method: POST
+                path: users/register
+                controller: Vankosoft\ApiBundle\Controller\ApiRegisterController
+                normalization_context:
+                    groups: ['admin:user:read']
             users_get:
                 method: GET
                 path: users/{id}
                 normalization_context:
                     groups: ['admin:user:read']
+            
                     
         properties:
             id:

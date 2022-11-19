@@ -5,3 +5,11 @@ vs_api_get_logged_user:
 vs_api_login_check:
     path: /api/login_check
 
+vs_api_users_register:
+    path: /api/users/register
+    methods: ['POST']
+    defaults:
+        _controller: Vankosoft\ApiBundle\Controller\ApiRegisterController::register
+        _api_resource_class: '%vs_users.model.users.class%'
+        _api_item_operation_name: users_register
+

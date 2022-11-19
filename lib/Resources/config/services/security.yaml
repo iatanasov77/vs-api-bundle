@@ -28,5 +28,22 @@ services:
         arguments:
             - '@vs_api.api_manager'
             - '@vs_users.repository.users'
+            
+    Vankosoft\ApiBundle\Controller\ApiRegisterController:
+        public: true
+        autowire: true
+        tags: ['controller.service_arguments']
+        arguments:
+            - '@doctrine'
+            - '@vs_users.manager.user'
+            - '@vs_users.repository.users'
+            - '@vs_users.factory.users'
+            - '@vs_users.repository.user_roles'
+            - {
+                registerRole: '%vs_users.register_role%'
+            }
+        calls:
+            - setTokenGenerator: ['@?symfonycasts.verify_email.token_generator']
+            - setVerifyEmailHelper: ['@?symfonycasts.verify_email.helper']
 
 
