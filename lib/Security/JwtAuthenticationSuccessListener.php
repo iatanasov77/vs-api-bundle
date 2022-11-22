@@ -60,7 +60,7 @@ class JwtAuthenticationSuccessListener
     {
         $status         = $event->getResponse()->getStatusCode() == 200 ? Status::STATUS_OK : Status::STATUS_ERROR;
         $payload        = $event->getData();
-        $decodedToken   = $this->jwtManager->decode( $payload['token'] );
+        $decodedToken   = $this->jwtManager->parse( $payload['token'] );
         
         $payload['tokenCreatedTimestamp']   = $decodedToken['iat'];
         $payload['tokenExpiredTimestamp']   = $decodedToken['exp'];
