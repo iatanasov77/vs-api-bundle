@@ -26,7 +26,7 @@ services:
     vs_api.jwt_authentication_success_listener:
         class: Vankosoft\ApiBundle\Security\JwtAuthenticationSuccessListener
         arguments:
-            - '@vs_api.api_manager'
+            - '@lexik_jwt_authentication.jwt_manager'
             - '@doctrine.orm.entity_manager'
         tags:
             - { name: 'kernel.event_listener', event: 'lexik_jwt_authentication.on_authentication_success', method: 'onAuthenticationSuccessResponse' }

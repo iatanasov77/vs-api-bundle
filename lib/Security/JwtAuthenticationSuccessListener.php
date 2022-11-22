@@ -2,6 +2,7 @@
 
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationFailureEvent;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Doctrine\ORM\EntityManager;
 
 use Vankosoft\ApplicationBundle\Component\Status;
@@ -12,15 +13,15 @@ use Vankosoft\UsersBundle\Model\UserInterface;
  */
 class JwtAuthenticationSuccessListener
 {
-    /** @var ApiManager */
-    private $apiManager;
+    /** @var JWTTokenManagerInterface */
+    private $jwtManager;
     
     /** @var EntityManager */
     private $entityManager;
     
-    public function __construct( ApiManager $apiManager, EntityManager $entityManager )
+    public function __construct( JWTTokenManagerInterface $jwtManager, EntityManager $entityManager )
     {
-        $this->apiManager       = $apiManager;
+        $this->jwtManager       = $jwtManager;
         $this->entityManager    = $entityManager;
     }
         
@@ -57,12 +58,12 @@ class JwtAuthenticationSuccessListener
     
     private function modifyResponse( UserInterface $user,  AuthenticationSuccessEvent &$event ): void
     {
-        $status                     = $event->getResponse()->getStatusCode() == 200 ? Status::STATUS_OK : Status::STATUS_ERROR;
-        $payload                    = $event->getData();
-        $jwtToken                   = $this->apiManager->getToken();
+        $status         = $event->getResponse()->getStatusCode() == 200 ? Status::STATUS_OK : Status::STATUS_ERROR;
+        $payload        = $event->getData();
+        $decodedToken   = $this->jwtManager->decode( $payload['token'] );
         
-        $payload['tokenCreatedTimestamp']   = $jwtToken['iat'];
-        $payload['tokenExpiredTimestamp']   = $jwtToken['exp'];
+        $payload['tokenCreatedTimestamp']   = $decodedToken['iat'];
+        $payload['tokenExpiredTimestamp']   = $decodedToken['exp'];
         
         $payload['userId']                  = $user->getId();
         $payload['userFullName']            = $user->getInfo()->getFullName();
