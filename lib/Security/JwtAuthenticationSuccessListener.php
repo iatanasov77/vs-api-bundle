@@ -26,6 +26,11 @@ class JwtAuthenticationSuccessListener
     }
         
     /**
+     * TO REFRESH TOKEN AFTER EXPIRED USE
+     * =========================================================
+     *      https://github.com/markitosgv/JWTRefreshTokenBundle
+     *      https://symfony.com/bundles/LexikJWTAuthenticationBundle/current/index.html#about-token-expiration
+     * 
      * @param AuthenticationSuccessEvent $event
      */
     public function onAuthenticationSuccessResponse( AuthenticationSuccessEvent $event ): void
