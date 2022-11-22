@@ -62,11 +62,11 @@ class JwtAuthenticationSuccessListener
         $payload        = $event->getData();
         $decodedToken   = $this->jwtManager->parse( $payload['token'] );
         
-        $payload['tokenCreatedTimestamp']   = $decodedToken['iat'];
-        $payload['tokenExpiredTimestamp']   = $decodedToken['exp'];
+        $payload['tokenCreated']   = $decodedToken['iat'];
+        $payload['tokenExpired']   = $decodedToken['exp'];
         
-        $payload['userId']                  = $user->getId();
-        $payload['userFullName']            = $user->getInfo()->getFullName();
+        $payload['userId']          = $user->getId();
+        $payload['userFullName']    = $user->getInfo()->getFullName();
         //$payload['userRoles']               = $user->getRoles();
         
         $event->setData([
