@@ -12,11 +12,15 @@ use Vankosoft\UsersBundle\Model\UserInterface;
  */
 class JwtAuthenticationSuccessListener
 {
+    /** @var ApiManager */
+    private $apiManager;
+    
     /** @var EntityManager */
     private $entityManager;
     
-    public function __construct( EntityManager $entityManager )
+    public function __construct( ApiManager $apiManager, EntityManager $entityManager )
     {
+        $this->apiManager       = $apiManager;
         $this->entityManager    = $entityManager;
     }
         
@@ -48,17 +52,21 @@ class JwtAuthenticationSuccessListener
     {
         $response = new JWTAuthenticationFailureResponse( 'Authentication failed', 401 );
         
-        $event->setResponse($response);
+        $event->setResponse( $response );
     }
     
     private function modifyResponse( UserInterface $user,  AuthenticationSuccessEvent &$event ): void
     {
         $status                     = $event->getResponse()->getStatusCode() == 200 ? Status::STATUS_OK : Status::STATUS_ERROR;
         $payload                    = $event->getData();
+        $jwtToken                   = $this->apiManager->getToken();
         
-        $payload['userId']          = $user->getId();
-        $payload['userFullName']    = $user->getInfo()->getFullName();
-        //$payload['userRoles']   = $user->getRoles();
+        $payload['tokenCreatedTimestamp']   = $jwtToken['iat'];
+        $payload['tokenExpiredTimestamp']   = $jwtToken['exp'];
+        
+        $payload['userId']                  = $user->getId();
+        $payload['userFullName']            = $user->getInfo()->getFullName();
+        //$payload['userRoles']               = $user->getRoles();
         
         $event->setData([
             'status'    => $status,
