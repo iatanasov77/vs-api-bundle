@@ -29,8 +29,9 @@ class ApiLoginController extends AbstractController
         $user   = $this->usersRepository->findOneBy( ['username' => $token['username']] );
         
         $data   = [
-            'tokenCreatedTimestamp' => $token['iat'],
-            'tokenExpiredTimestamp' => $token['exp'],
+            'tokenCreated'  => $token['iat'],
+            'tokenExpired'  => $token['exp'],
+            
             'user'                  => [
                 'username'  => $user->getUsername(),
                 'email'     => $user->getEmail(),

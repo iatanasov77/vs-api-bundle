@@ -2,6 +2,7 @@
 
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationFailureEvent;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Doctrine\ORM\EntityManager;
 
 use Vankosoft\ApplicationBundle\Component\Status;
@@ -12,15 +13,24 @@ use Vankosoft\UsersBundle\Model\UserInterface;
  */
 class JwtAuthenticationSuccessListener
 {
+    /** @var JWTTokenManagerInterface */
+    private $jwtManager;
+    
     /** @var EntityManager */
     private $entityManager;
     
-    public function __construct( EntityManager $entityManager )
+    public function __construct( JWTTokenManagerInterface $jwtManager, EntityManager $entityManager )
     {
+        $this->jwtManager       = $jwtManager;
         $this->entityManager    = $entityManager;
     }
         
     /**
+     * TO REFRESH TOKEN AFTER EXPIRED USE
+     * =========================================================
+     *      https://github.com/markitosgv/JWTRefreshTokenBundle
+     *      https://symfony.com/bundles/LexikJWTAuthenticationBundle/current/index.html#about-token-expiration
+     * 
      * @param AuthenticationSuccessEvent $event
      */
     public function onAuthenticationSuccessResponse( AuthenticationSuccessEvent $event ): void
@@ -48,17 +58,21 @@ class JwtAuthenticationSuccessListener
     {
         $response = new JWTAuthenticationFailureResponse( 'Authentication failed', 401 );
         
-        $event->setResponse($response);
+        $event->setResponse( $response );
     }
     
     private function modifyResponse( UserInterface $user,  AuthenticationSuccessEvent &$event ): void
     {
-        $status                     = $event->getResponse()->getStatusCode() == 200 ? Status::STATUS_OK : Status::STATUS_ERROR;
-        $payload                    = $event->getData();
+        $status         = $event->getResponse()->getStatusCode() == 200 ? Status::STATUS_OK : Status::STATUS_ERROR;
+        $payload        = $event->getData();
+        $decodedToken   = $this->jwtManager->parse( $payload['token'] );
+        
+        $payload['tokenCreated']   = $decodedToken['iat'];
+        $payload['tokenExpired']   = $decodedToken['exp'];
         
         $payload['userId']          = $user->getId();
         $payload['userFullName']    = $user->getInfo()->getFullName();
-        //$payload['userRoles']   = $user->getRoles();
+        //$payload['userRoles']               = $user->getRoles();
         
         $event->setData([
             'status'    => $status,

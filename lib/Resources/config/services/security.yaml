@@ -10,6 +10,12 @@ services:
         arguments:
             - '@vs_users.repository.users'
             
+    vs_api.api_manager:
+        class: Vankosoft\ApiBundle\Security\ApiManager
+        arguments:
+            - '@security.token_storage'
+            - '@lexik_jwt_authentication.jwt_manager'
+    
     vs_api.jwt_created_listener:
         class: Vankosoft\ApiBundle\Security\JWTCreatedListener
         arguments:
@@ -19,16 +25,11 @@ services:
             
     vs_api.jwt_authentication_success_listener:
         class: Vankosoft\ApiBundle\Security\JwtAuthenticationSuccessListener
-        arguments: 
+        arguments:
+            - '@lexik_jwt_authentication.jwt_manager'
             - '@doctrine.orm.entity_manager'
         tags:
             - { name: 'kernel.event_listener', event: 'lexik_jwt_authentication.on_authentication_success', method: 'onAuthenticationSuccessResponse' }
-            
-    vs_api.api_manager:
-        class: Vankosoft\ApiBundle\Security\ApiManager
-        arguments:
-            - '@security.token_storage'
-            - '@lexik_jwt_authentication.jwt_manager'
             
     Vankosoft\ApiBundle\Controller\ApiLoginController:
         tags: ['controller.service_arguments']
