@@ -22,6 +22,7 @@
        	"vankosoft/application": "^1.9.17",
        	"api-platform/core": "^2.7",
         "lexik/jwt-authentication-bundle": "^2.11",
+        "gesdinet/jwt-refresh-token-bundle": "^1.1",
         "nelmio/cors-bundle": "^2.2"
     },
     "conflict": {
