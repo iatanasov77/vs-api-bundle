@@ -1,3 +1,10 @@
+1.2.2	|	Release date: **23.11.2022**
+============================================
+* New Features:
+  - Improve JwtAuthenticationSuccessListener .
+  - Add JWTRefreshTokenBundle
+
+
 1.2.1	|	Release date: **19.11.2022**
 ============================================
 * New Features:
