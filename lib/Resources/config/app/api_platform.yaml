@@ -17,15 +17,11 @@ api_platform:
           - '%kernel.project_dir%/src/Entity'
           - '%kernel.project_dir%/config/api_platform/api_resources'
 
-#    formats:
-#        jsonld:
-#            mime_types: ['application/ld+json']
-#
-#        json:
-#            mime_types: ['application/json']
-#
-#        html:
-#            mime_types: ['text/html']
+    formats:
+        json: ['application/json']
+        jsonld: ['application/ld+json']
+        html: ['text/html']
+        multipart: ['multipart/form-data']
 
     patch_formats:
         json: ['application/merge-patch+json']
