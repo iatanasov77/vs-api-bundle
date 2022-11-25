@@ -1,3 +1,11 @@
+1.2.3	|	Release date: **25.11.2022**
+============================================
+* New Features and Improvements:
+  - Update Api Platform Configuration.
+  - Add Username and Email to Response From  Login Endpoint.
+  - Display API Documentation.
+
+
 1.2.2	|	Release date: **23.11.2022**
 ============================================
 * New Features:
