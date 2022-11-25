@@ -71,6 +71,8 @@ class JwtAuthenticationSuccessListener
         $payload['tokenExpired']   = $decodedToken['exp'];
         
         $payload['userId']          = $user->getId();
+        $payload['email']           = $user->getEmail();
+        $payload['username']        = $user->getUsername();
         $payload['userFullName']    = $user->getInfo()->getFullName();
         //$payload['userRoles']               = $user->getRoles();
         
