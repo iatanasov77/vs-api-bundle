@@ -5,12 +5,11 @@ api_platform:
     description: 'API for SoftUni FrontEnd Projects'
     version: '0.0.1'  # The version of the API.
     
-    show_webby: false
-    
     # Displaying of the API documentation 
     enable_swagger_ui: true
     enable_re_doc: true
     enable_docs: true
+    show_webby: true
     
     mapping:
         paths:
