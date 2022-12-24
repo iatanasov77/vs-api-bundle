@@ -1,3 +1,11 @@
+2.0.0	|	Release date: **24.12.2022**
+============================================
+* New Features:
+  - Upgrade Composer Dependencies.
+* Bug-Fixes:
+  - Fix about New Symfony Security.
+
+
 1.2.3	|	Release date: **25.11.2022**
 ============================================
 * New Features and Improvements:
