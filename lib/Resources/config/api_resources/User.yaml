@@ -2,35 +2,39 @@ resources:
     '%vs_users.model.users.class%':
         shortName: 'User'
         
-        collectionOperations:
+        operations:
             users_get:
+                class: ApiPlatform\Metadata\GetCollection
                 method: GET
-                path: users
+                uriTemplate: /users
                 normalization_context:
                     groups: ['admin:user:read']
             users_post:
+                class: ApiPlatform\Metadata\Post
                 method: POST
-                path: users/new
+                uriTemplate: /users/new
                 normalization_context:
                     groups: ['admin:user:create']
             users_put:
-                method: POST
-                path: users/update
+                class: ApiPlatform\Metadata\Put
+                method: PUT
+                uriTemplate: /users/update
                 normalization_context:
                     groups: ['admin:user:update']
-        itemOperations:
             users_register:
+                class: ApiPlatform\Metadata\Post
+                method: POST
                 read: false # Disable ReadListener
                 write: false
                 serialize: true
-                method: POST
-                path: users/register
+                uriTemplate: /users/register
                 controller: Vankosoft\ApiBundle\Controller\ApiRegisterController
                 normalization_context:
                     groups: ['admin:user:read']
-            users_get:
+            users_get_user:
+                class: ApiPlatform\Metadata\Get
                 method: GET
-                path: users/{id}
+                uriTemplate: /users/{id}
                 normalization_context:
                     groups: ['admin:user:read']
             

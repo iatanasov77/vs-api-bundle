@@ -2,26 +2,30 @@ resources:
     '%vs_application.model.locale.class%':
         shortName: 'Locale'
         
-        collectionOperations:
+        operations:
             locales_get:
+                class: ApiPlatform\Metadata\GetCollection
                 method: GET
-                path: admin/locales
+                uriTemplate: /admin/locales
                 normalization_context:
                     groups: ['admin:locale:read']
             locales_post:
+                class: ApiPlatform\Metadata\Post
                 method: POST
-                path: admin/locales/new
+                uriTemplate: /admin/locales/new
                 normalization_context:
                     groups: ['admin:locale:create']
             locales_put:
-                method: POST
-                path: admin/locales/update
+                class: ApiPlatform\Metadata\Put
+                method: PUT
+                uriTemplate: /admin/locales/update
                 normalization_context:
                     groups: ['admin:locale:update']
-        itemOperations:
-            locales_get:
+
+            locales_get_locale:
+                class: ApiPlatform\Metadata\Get
                 method: GET
-                path: admin/locales/{id}
+                uriTemplate: /admin/locales/{id}
                 normalization_context:
                     groups: ['admin:locale:read']
                     
