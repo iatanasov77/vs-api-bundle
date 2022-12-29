@@ -2,7 +2,8 @@ resources:
     '%vs_users.model.users.class%':
         shortName: 'User'
         
-        operations:
+        collectionOperations:
+        #operations:
             users_get:
                 class: ApiPlatform\Metadata\GetCollection
                 method: GET
