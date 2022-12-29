@@ -49,5 +49,9 @@ resources:
                 identifier: false
                 writeable: true
                 required: true
+            info:
+                identifier: false
+                writeable: false
+                required: false
 
 
