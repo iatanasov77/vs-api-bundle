@@ -1,9 +1,8 @@
 resources:
     '%vs_application.model.locale.class%':
         shortName: 'Locale'
-        
-        collectionOperations:
-        #operations:
+
+        operations:
             locales_get:
                 class: ApiPlatform\Metadata\GetCollection
                 method: GET
