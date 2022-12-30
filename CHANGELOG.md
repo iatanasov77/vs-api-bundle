@@ -1,3 +1,12 @@
+2.0.1	|	Release date: **30.12.2022**
+============================================
+* Bug-Fixes:
+  - Fix Swagger UI Route.
+  - Fix Api Platform Config.
+  - Update Locales and Users API Resources.
+  - Fix Serializer Config.
+
+
 2.0.0	|	Release date: **24.12.2022**
 ============================================
 * New Features:

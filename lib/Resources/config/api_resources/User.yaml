@@ -2,36 +2,40 @@ resources:
     '%vs_users.model.users.class%':
         shortName: 'User'
         
-        collectionOperations:
+        operations:
             users_get:
+                class: ApiPlatform\Metadata\GetCollection
                 method: GET
-                path: users
-                normalization_context:
+                uriTemplate: /users
+                normalizationContext:
                     groups: ['admin:user:read']
             users_post:
+                class: ApiPlatform\Metadata\Post
                 method: POST
-                path: users/new
-                normalization_context:
+                uriTemplate: /users/new
+                normalizationContext:
                     groups: ['admin:user:create']
             users_put:
-                method: POST
-                path: users/update
-                normalization_context:
+                class: ApiPlatform\Metadata\Put
+                method: PUT
+                uriTemplate: /users/update
+                normalizationContext:
                     groups: ['admin:user:update']
-        itemOperations:
             users_register:
+                class: ApiPlatform\Metadata\Post
+                method: POST
                 read: false # Disable ReadListener
                 write: false
                 serialize: true
-                method: POST
-                path: users/register
+                uriTemplate: /users/register
                 controller: Vankosoft\ApiBundle\Controller\ApiRegisterController
-                normalization_context:
+                normalizationContext:
                     groups: ['admin:user:read']
-            users_get:
+            users_get_user:
+                class: ApiPlatform\Metadata\Get
                 method: GET
-                path: users/{id}
-                normalization_context:
+                uriTemplate: /users/{id}
+                normalizationContext:
                     groups: ['admin:user:read']
             
                     
@@ -44,5 +48,9 @@ resources:
                 identifier: false
                 writeable: true
                 required: true
+            info:
+                identifier: false
+                writeable: false
+                required: false
 
 

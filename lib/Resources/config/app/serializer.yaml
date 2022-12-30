@@ -1,6 +1,11 @@
 framework:
     serializer:
         enabled: true
+        
+        default_context:
+            enable_max_depth: true
+            yaml_indentation: 4
+            
         mapping:
             paths:
                 - '%kernel.project_dir%/config/api_platform/serialization/'
