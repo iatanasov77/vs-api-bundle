@@ -2,25 +2,25 @@ resources:
     '%vs_users.model.users.class%':
         shortName: 'User'
         
-        collectionOperations:
-        #operations:
+        #collectionOperations:
+        operations:
             users_get:
                 class: ApiPlatform\Metadata\GetCollection
                 method: GET
                 uriTemplate: /users
-                normalization_context:
+                normalizationContext:
                     groups: ['admin:user:read']
             users_post:
                 class: ApiPlatform\Metadata\Post
                 method: POST
                 uriTemplate: /users/new
-                normalization_context:
+                normalizationContext:
                     groups: ['admin:user:create']
             users_put:
                 class: ApiPlatform\Metadata\Put
                 method: PUT
                 uriTemplate: /users/update
-                normalization_context:
+                normalizationContext:
                     groups: ['admin:user:update']
             users_register:
                 class: ApiPlatform\Metadata\Post
@@ -30,13 +30,13 @@ resources:
                 serialize: true
                 uriTemplate: /users/register
                 controller: Vankosoft\ApiBundle\Controller\ApiRegisterController
-                normalization_context:
+                normalizationContext:
                     groups: ['admin:user:read']
             users_get_user:
                 class: ApiPlatform\Metadata\Get
                 method: GET
                 uriTemplate: /users/{id}
-                normalization_context:
+                normalizationContext:
                     groups: ['admin:user:read']
             
                     

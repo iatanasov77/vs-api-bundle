@@ -8,26 +8,26 @@ resources:
                 class: ApiPlatform\Metadata\GetCollection
                 method: GET
                 uriTemplate: /admin/locales
-                normalization_context:
+                normalizationContext:
                     groups: ['admin:locale:read']
             locales_post:
                 class: ApiPlatform\Metadata\Post
                 method: POST
                 uriTemplate: /admin/locales/new
-                normalization_context:
+                normalizationContext:
                     groups: ['admin:locale:create']
             locales_put:
                 class: ApiPlatform\Metadata\Put
                 method: PUT
                 uriTemplate: /admin/locales/update
-                normalization_context:
+                normalizationContext:
                     groups: ['admin:locale:update']
 
             locales_get_locale:
                 class: ApiPlatform\Metadata\Get
                 method: GET
                 uriTemplate: /admin/locales/{id}
-                normalization_context:
+                normalizationContext:
                     groups: ['admin:locale:read']
                     
         properties:
