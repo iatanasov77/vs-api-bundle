@@ -1,3 +1,13 @@
+2.1.0	|	Release date: **06.03.2023**
+============================================
+* New Features:
+  - Add Docs.
+  - Add Mercure Bundle. Used For Pushing to Connected API Clients.
+  - Add Mercure Configuration.
+  - Add Configuration for API Title.
+  - Add Configuration for API Description and Version.
+
+
 2.0.1	|	Release date: **30.12.2022**
 ============================================
 * Bug-Fixes:

@@ -1,10 +1,6 @@
 # https://api-platform.com/docs/core/configuration/
 ##########################################################
 api_platform:
-    title: 'SoftUni API'
-    description: 'API for SoftUni FrontEnd Projects'
-    version: '0.0.1'  # The version of the API.
-    
     # Displaying of the API documentation 
     enable_swagger_ui: true
     enable_re_doc: true
