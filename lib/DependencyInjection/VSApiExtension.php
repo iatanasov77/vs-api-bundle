@@ -8,6 +8,8 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 /** @experimental */
 final class VSApiExtension extends Extension
 {
+    use PrependApiPlatformTrait;
+    
     public function load( array $configs, ContainerBuilder $container ): void
     {
         $config = $this->processConfiguration( $this->getConfiguration( [], $container ), $configs );
@@ -23,5 +25,15 @@ final class VSApiExtension extends Extension
         if ( $container->hasParameter( 'api_platform.enable_swagger_ui' ) && $container->getParameter( 'api_platform.enable_swagger_ui' ) ) {
             $xmlLoader->load( 'integrations/swagger.xml' );
         }
+        
+        $this->prepend( $container );
+    }
+    
+    public function prepend( ContainerBuilder $container ): void
+    {
+        $config = $container->getExtensionConfig( $this->getAlias() );
+        $config = $this->processConfiguration( $this->getConfiguration( [], $container ), $config );
+        
+        $this->prependApiPlatform( $container );
     }
 }

@@ -19,6 +19,9 @@ final class Configuration implements ConfigurationInterface
                 ->booleanNode( 'enabled' )
                     ->defaultFalse()
                 ->end()
+                ->scalarNode( 'title' )
+                    ->defaultValue( 'VankoSoft API' )->cannotBeEmpty()
+                ->end()
             ->end()
         ;
 
