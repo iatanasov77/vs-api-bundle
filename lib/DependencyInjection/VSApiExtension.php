@@ -11,9 +11,9 @@ final class VSApiExtension extends Extension implements PrependExtensionInterfac
 {
     use PrependApiPlatformTrait;
     
-    public function load( array $configs, ContainerBuilder $container ): void
+    public function load( array $config, ContainerBuilder $container ): void
     {
-        $config = $this->processConfiguration( $this->getConfiguration( [], $container ), $configs );
+        $config = $this->processConfiguration( $this->getConfiguration( [], $container ), $config );
         
         $yamlLoader = new Loader\YamlFileLoader( $container, new FileLocator( __DIR__.'/../Resources/config' ) );
         $xmlLoader  = new Loader\XmlFileLoader( $container, new FileLocator( __DIR__ . '/../Resources/config' ) );

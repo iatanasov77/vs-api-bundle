@@ -14,10 +14,13 @@ trait PrependApiPlatformTrait
         //echo "<pre>"; var_dump( $vsApiConfig ); die;
         
         $apiPlatformConfig        = $container->getExtensionConfig( 'api_platform' );
+        //echo "<pre>"; var_dump( $apiPlatformConfig ); die;
+        
         $container->prependExtensionConfig( 'api_platform', [
-            'title'  => $vsApiConfig['title']
+            'title'         => $vsApiConfig[0]['title'],
+            'description'   => $vsApiConfig[0]['description']
         ]);
-
+        
         //$this->debug( $container );
     }
     
