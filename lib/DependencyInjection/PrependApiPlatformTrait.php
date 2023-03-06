@@ -11,8 +11,7 @@ trait PrependApiPlatformTrait
         }
         
         $vsApiConfig    = $container->getExtensionConfig( 'vs_api' );
-        //echo "<pre>"; var_dump($vsPaymentConfig); die;
-        $vsPaymentResources = $vsPaymentConfig[0]['resources'];
+        //echo "<pre>"; var_dump( $vsApiConfig ); die;
         
         $apiPlatformConfig        = $container->getExtensionConfig( 'api_platform' );
         $container->prependExtensionConfig( 'api_platform', [
