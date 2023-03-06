@@ -18,7 +18,8 @@ trait PrependApiPlatformTrait
         
         $container->prependExtensionConfig( 'api_platform', [
             'title'         => $vsApiConfig[0]['title'],
-            'description'   => $vsApiConfig[0]['description']
+            'description'   => $vsApiConfig[0]['description'],
+            'version'       => $vsApiConfig[0]['version']
         ]);
         
         //$this->debug( $container );
