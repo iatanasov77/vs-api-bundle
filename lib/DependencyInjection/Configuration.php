@@ -25,6 +25,9 @@ final class Configuration implements ConfigurationInterface
                 ->scalarNode( 'description' )
                     ->defaultValue( 'API for VankoSoft FrontEnd Projects.' )->cannotBeEmpty()
                 ->end()
+                ->scalarNode( 'version' )
+                    ->defaultValue( '0.0.1' )->cannotBeEmpty()
+                ->end()
             ->end()
         ;
 
