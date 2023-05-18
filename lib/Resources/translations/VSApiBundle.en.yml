@@ -1,5 +1,8 @@
 vs_api:
     messages:
         register_success: 'User Registered Successfuly !'
+        resource_create_successfull: 'The resource is created successfull !!!'
+        resource_update_successfull: 'The resource is updated successfull !!!'
+        resource_delete_successfull: 'The resource is deleted successfull !!!'
 
 

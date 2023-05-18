@@ -1,2 +1,5 @@
+
 https://symfony.com/blog/symfony-gets-real-time-push-capabilities
+https://symfony.com/doc/current/mercure.html
+https://api-platform.com/docs/core/mercure/
 
