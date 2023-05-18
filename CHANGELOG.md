@@ -1,3 +1,11 @@
+2.1.1	|	Release date: **18.05.2023**
+============================================
+* New Features and Improvements:
+  - Update Docs.
+  - Updating Translations.
+  - Improve API Documentation.
+
+
 2.1.0	|	Release date: **06.03.2023**
 ============================================
 * New Features:
