@@ -59,7 +59,7 @@ class ApiManager
         
         return [
             'tokenString'   => $tokenString,
-            'token'         => $this->jwtManager->decode( $tokenString )
+            'token'         => $this->jwtManager->parse( $tokenString )
         ];
     }
 }
