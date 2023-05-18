@@ -72,9 +72,8 @@ class ApiLoginController extends AbstractController
         $token  = $this->apiManager->createToken( $user );
         
         $data   = [
-            'token' => $token,
-            //'tokenCreated'  => $token['iat'],
-            //'tokenExpired'  => $token['exp'],
+            'tokenString'   => $token['tokenString'],
+            'token'         => $token['token'],
             
             'user'                  => [
                 'username'  => $user->getUsername(),

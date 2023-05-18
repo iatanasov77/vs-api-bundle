@@ -53,8 +53,13 @@ class ApiManager
         return true;
     }
     
-    public function createToken( UserInterface $oUser ): string
+    public function createToken( UserInterface $oUser ): array
     {
-        return $this->jwtManager->create( $oUser );
+        $tokenString    = $this->jwtManager->create( $oUser );
+        
+        return [
+            'tokenString'   => $tokenString,
+            'token'         => $this->jwtManager->decode( $tokenString )
+        ];
     }
 }
