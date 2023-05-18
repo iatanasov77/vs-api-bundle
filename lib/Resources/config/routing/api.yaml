@@ -2,6 +2,10 @@ vs_api_get_logged_user:
     path:     /api/logged-user
     controller: Vankosoft\ApiBundle\Controller\ApiLoginController::getLoggedUser
     
+vs_api_login_by_signature:
+    path:     /api/login-by-signature
+    controller: Vankosoft\ApiBundle\Controller\ApiLoginController::loginBySignature
+    
 vs_api_login_check:
     path: /api/login_check
     

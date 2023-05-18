@@ -1,0 +1,3 @@
+vs_api_get_signature:
+    path:     /api/get-signature/{userId}
+    controller: Vankosoft\ApiBundle\Controller\ApiLoginController::getSignature

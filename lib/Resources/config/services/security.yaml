@@ -15,6 +15,7 @@ services:
         arguments:
             - '@security.token_storage'
             - '@lexik_jwt_authentication.jwt_manager'
+            - '@symfonycasts.verify_email.helper'
     
     vs_api.jwt_created_listener:
         class: Vankosoft\ApiBundle\Security\JWTCreatedListener
