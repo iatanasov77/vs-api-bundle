@@ -1,3 +1,10 @@
+2.1.2	|	Release date: **18.05.2023**
+============================================
+* New Features:
+  - Add New Features into the ApiManager.
+  - Add Login by Signature.
+
+
 2.1.1	|	Release date: **18.05.2023**
 ============================================
 * New Features and Improvements:
