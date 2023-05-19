@@ -1,3 +1,9 @@
+2.1.3	|	Release date: **19.05.2023**
+============================================
+* New Features:
+  - Add Error Messages For Login By Signature Request.
+
+
 2.1.2	|	Release date: **18.05.2023**
 ============================================
 * New Features:
