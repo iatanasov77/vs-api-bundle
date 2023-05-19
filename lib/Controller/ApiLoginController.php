@@ -4,6 +4,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use Vankosoft\ApplicationBundle\Component\Status;
 use Vankosoft\UsersBundle\Repository\UsersRepositoryInterface;
@@ -18,10 +19,17 @@ class ApiLoginController extends AbstractController
     /** @var UsersRepositoryInterface */
     protected $usersRepository;
     
-    public function __construct( ApiManager $apiManager, UsersRepositoryInterface $usersRepository )
-    {
+    // TranslatorInterface
+    protected $translator;
+    
+    public function __construct(
+        ApiManager $apiManager,
+        UsersRepositoryInterface $usersRepository,
+        TranslatorInterface $translator
+    ) {
         $this->apiManager       = $apiManager;
         $this->usersRepository  = $usersRepository;
+        $this->translator       = $translator;
     }
     
     public function getLoggedUser( Request $request ): Response
@@ -52,13 +60,19 @@ class ApiLoginController extends AbstractController
         $id = $request->get( 'id' ); // retrieve the user id from the url
         // Verify the user id exists and is not null
         if( null === $id ) {
-            return $this->redirectToRoute( 'app_home' );
+            return new JsonResponse([
+                'status'    => Status::STATUS_ERROR,
+                'message'   => $this->translator->trans( 'vs_api.messages.login_by_signature.invalid_request', [], 'VSApiBundle' ),
+            ]);
         }
         
         $user = $this->usersRepository->find( $id );
         // Ensure the user exists in persistence
         if ( null === $user ) {
-            return $this->redirectToRoute( 'app_home' );
+            return new JsonResponse([
+                'status'    => Status::STATUS_ERROR,
+                'message'   => $this->translator->trans( 'vs_api.messages.login_by_signature.invalid_user', [], 'VSApiBundle' ),
+            ]);
         }
         
         try {
@@ -66,7 +80,10 @@ class ApiLoginController extends AbstractController
         } catch ( VerifyEmailExceptionInterface $e ) {
             $this->addFlash( 'verify_email_error', $e->getReason() );
             
-            return $this->redirectToRoute( 'app_home' );
+            return new JsonResponse([
+                'status'    => Status::STATUS_ERROR,
+                'message'   => $this->translator->trans( 'vs_api.messages.login_by_signature.invalid_signature', [], 'VSApiBundle' ),
+            ]);
         }
         
         $token  = $this->apiManager->createToken( $user );
