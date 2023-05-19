@@ -1,3 +1,9 @@
+2.1.4	|	Release date: **19.05.2023**
+============================================
+* New Features and Improvements:
+  - Improve Login By Signature Response.
+
+
 2.1.3	|	Release date: **19.05.2023**
 ============================================
 * New Features:
