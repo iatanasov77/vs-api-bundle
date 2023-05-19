@@ -37,6 +37,7 @@ services:
         arguments:
             - '@vs_api.api_manager'
             - '@vs_users.repository.users'
+            - '@translator'
             
     Vankosoft\ApiBundle\Controller\ApiRegisterController:
         tags: ['controller.service_arguments']

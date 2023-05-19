@@ -4,5 +4,10 @@ vs_api:
         resource_create_successfull: 'Ресурсът е създаден успешно !!!'
         resource_update_successfull: 'Ресурсът е редактиран успешно !!!'
         resource_delete_successfull: 'Ресурсът е изтрит успешно !!!'
+        
+        login_by_signature:
+            invalid_request: 'Подписаната заявка е невалидна !!!'
+            invalid_user: 'Потребителят, който е подписал заявката, не е намерен !!!'
+            invalid_signature: 'Подписаната заявка е изтекла !!!'
 
 

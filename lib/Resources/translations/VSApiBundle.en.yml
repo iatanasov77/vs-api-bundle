@@ -4,5 +4,10 @@ vs_api:
         resource_create_successfull: 'The resource is created successfull !!!'
         resource_update_successfull: 'The resource is updated successfull !!!'
         resource_delete_successfull: 'The resource is deleted successfull !!!'
+        
+        login_by_signature:
+            invalid_request: 'The Signed Request is Invalid !!!'
+            invalid_user: 'The User that signed Request is Not Found !!!'
+            invalid_signature: 'The Signed Request is Expired !!!'
 
 
