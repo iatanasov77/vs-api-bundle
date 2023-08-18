@@ -31,9 +31,6 @@ class ApiManager
     public function getToken()
     {
         $token  = $this->tokenStorage->getToken();
-        if ( ! $token instanceof TokenInterface ) {
-            return null;
-        }
         
         return $this->jwtManager->decode( $token );
     }
