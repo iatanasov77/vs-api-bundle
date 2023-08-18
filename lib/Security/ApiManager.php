@@ -34,6 +34,11 @@ class ApiManager
         return $decodedJwtToken;
     }
     
+    public function invalidateToken()
+    {
+        $this->tokenStorage->reset();
+    }
+    
     public function getVerifySignature( UserInterface $oUser, string $signatureRoute ): VerifyEmailSignatureComponents
     {
         $signature  = $this->verifyEmailHelper->generateSignature(
