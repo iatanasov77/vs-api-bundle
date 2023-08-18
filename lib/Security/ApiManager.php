@@ -1,6 +1,7 @@
 <?php namespace Vankosoft\ApiBundle\Security;
 
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Model\VerifyEmailSignatureComponents;
@@ -29,9 +30,9 @@ class ApiManager
     
     public function getToken()
     {
-        $decodedJwtToken = $this->jwtManager->decode( $this->tokenStorage->getToken() );
+        $token  = $this->tokenStorage->getToken();
         
-        return $decodedJwtToken;
+        return $this->jwtManager->decode( $token );
     }
     
     public function invalidateToken()
