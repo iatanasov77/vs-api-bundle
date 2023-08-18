@@ -92,7 +92,7 @@ class ApiLoginController extends AbstractController
             'tokenString'   => $token['tokenString'],
             'token'         => $token['token'],
             
-            'user'                  => [
+            'user'          => [
                 'id'        => $user->getId(),
                 'username'  => $user->getUsername(),
                 'email'     => $user->getEmail(),
