@@ -1,3 +1,9 @@
+2.2.2	|	Release date: **10.11.2023**
+============================================
+* New Features:
+  - Create an ApiLoginException class.
+
+
 2.2.1	|	Release date: **18.08.2023**
 ============================================
 * New Features:
