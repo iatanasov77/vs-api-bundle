@@ -2,9 +2,9 @@
 ##########################################################
 api_platform:
     # Displaying of the API documentation 
-    enable_swagger_ui: true
-    enable_re_doc: true
-    enable_docs: true
+    enable_docs: '%env(bool:ENABLE_API_DOCS)%'
+    enable_re_doc: '%env(bool:ENABLE_API_DOCS)%'
+    enable_swagger_ui: '%env(bool:ENABLE_SWAGGER_UI)%'
     show_webby: true
     
     mapping:

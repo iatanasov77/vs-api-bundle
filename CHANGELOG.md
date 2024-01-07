@@ -1,3 +1,9 @@
+2.2.3	|	Release date: **07.01.2024**
+============================================
+* New Features:
+  - Use ENV Variables in Api Platform Configs.
+
+
 2.2.2	|	Release date: **10.11.2023**
 ============================================
 * New Features:
