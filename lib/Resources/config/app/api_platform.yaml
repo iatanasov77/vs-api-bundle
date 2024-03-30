@@ -1,6 +1,9 @@
 # https://api-platform.com/docs/core/configuration/
 ##########################################################
 api_platform:
+    defaults:
+        stateless: true
+    
     # Displaying of the API documentation 
     enable_docs: '%env(bool:ENABLE_API_DOCS)%'
     enable_re_doc: '%env(bool:ENABLE_API_DOCS)%'
