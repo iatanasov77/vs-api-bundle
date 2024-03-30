@@ -3,11 +3,11 @@
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
+use Sylius\Bundle\ResourceBundle\DependencyInjection\Extension\AbstractResourceExtension;
 
 /** @experimental */
-final class VSApiExtension extends Extension implements PrependExtensionInterface
+final class VSApiExtension extends AbstractResourceExtension implements PrependExtensionInterface
 {
     use PrependApiPlatformTrait;
     
@@ -26,6 +26,9 @@ final class VSApiExtension extends Extension implements PrependExtensionInterfac
         if ( $container->hasParameter( 'api_platform.enable_swagger_ui' ) && $container->getParameter( 'api_platform.enable_swagger_ui' ) ) {
             $xmlLoader->load( 'integrations/swagger.xml' );
         }
+        
+        // Register resources
+        $this->registerResources( 'vs_api', $config['orm_driver'], $config['resources'], $container );
         
         $this->prepend( $container );
     }
