@@ -1,3 +1,9 @@
+3.0.1	|	Release date: **30.03.2024**
+============================================
+* New Features:
+  - Configure Api Platform Default 'stateless' option.
+
+
 3.0.0	|	Release date: **30.03.2024**
 ============================================
 * New Features:
