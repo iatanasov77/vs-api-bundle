@@ -1,3 +1,12 @@
+3.0.0	|	Release date: **30.03.2024**
+============================================
+* New Features:
+  - Remove Require Vankosoft Core Library and Add it to Suggestions.
+  - Update Composer Requirements.
+  - Add RefreshToken Model as Sylius Resource.
+  - Add New Api Platform Config Option for Stateless Requests.
+
+
 2.2.3	|	Release date: **07.01.2024**
 ============================================
 * New Features:
