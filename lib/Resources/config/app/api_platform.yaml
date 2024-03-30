@@ -2,7 +2,7 @@
 ##########################################################
 api_platform:
     defaults:
-        stateless: false
+        stateless: true
     
     # Displaying of the API documentation 
     enable_docs: '%env(bool:ENABLE_API_DOCS)%'
