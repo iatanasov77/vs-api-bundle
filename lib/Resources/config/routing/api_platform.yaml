@@ -1,7 +1,7 @@
 api_platform:
     resource: .
     type: api_platform
-    prefix: /api
+    #prefix: /api
     
 swagger_ui:
     path: /api-docs

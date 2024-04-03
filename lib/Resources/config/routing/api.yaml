@@ -1,19 +1,19 @@
 vs_api_get_logged_user:
-    path:     /api/logged-user
+    path:     /logged-user
     controller: Vankosoft\ApiBundle\Controller\ApiLoginController::getLoggedUser
     
 vs_api_login_by_signature:
-    path:     /api/login-by-signature
+    path:     /login-by-signature
     controller: Vankosoft\ApiBundle\Controller\ApiLoginController::loginBySignature
     
 vs_api_login_check:
-    path: /api/login_check
+    path: /login_check
     
 api_refresh_token:
-    path: /api/token/refresh
+    path: /token/refresh
 
 vs_api_users_register:
-    path: /api/users/register
+    path: /users/register
     methods: ['POST']
     defaults:
         #_controller: Vankosoft\ApiBundle\Controller\ApiRegisterController::register
