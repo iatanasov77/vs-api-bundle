@@ -1,3 +1,9 @@
+3.0.3	|	Release date: **08.06.2024**
+============================================
+* New Features:
+  - Improve 'loginBySignature' API Controller Action.
+
+
 3.0.2	|	Release date: **03.04.2024**
 ============================================
 * New Features:
