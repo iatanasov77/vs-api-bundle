@@ -55,18 +55,9 @@ class ApiLoginController extends AbstractController
         ]);
     }
 
-    public function loginBySignature( Request $request ): Response
+    public function loginBySignature( $userId, Request $request ): Response
     {
-        $id = $request->get( 'id' ); // retrieve the user id from the url
-        // Verify the user id exists and is not null
-        if( null === $id ) {
-            return new JsonResponse([
-                'status'    => Status::STATUS_ERROR,
-                'message'   => $this->translator->trans( 'vs_api.messages.login_by_signature.invalid_request', [], 'VSApiBundle' ),
-            ]);
-        }
-        
-        $user = $this->usersRepository->find( $id );
+        $user = $this->usersRepository->find( $userId );
         // Ensure the user exists in persistence
         if ( null === $user ) {
             return new JsonResponse([
