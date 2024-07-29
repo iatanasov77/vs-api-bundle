@@ -1,3 +1,11 @@
+3.0.4	|	Release date: **29.07.2024**
+============================================
+* New Features and Improvements:
+  - Create Api Manager Login By Signed URL.
+  - Add Some Model Traits.
+  - Improve Api Login By Signature.
+
+
 3.0.3	|	Release date: **08.06.2024**
 ============================================
 * New Features:

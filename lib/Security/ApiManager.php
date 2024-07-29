@@ -5,6 +5,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Model\VerifyEmailSignatureComponents;
+use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use Vankosoft\UsersBundle\Model\UserInterface;
 
 class ApiManager
@@ -46,7 +47,7 @@ class ApiManager
             $signatureRoute,
             $oUser->getId(),
             $oUser->getEmail(),
-            ['id' => $oUser->getId()]
+            ['userId' => $oUser->getId()]
         );
         
         return $signature;
@@ -54,9 +55,13 @@ class ApiManager
     
     public function verifySignature( string $signedUrl, string $userId, string $userEmail ): bool
     {
-        $this->verifyEmailHelper->validateEmailConfirmation( $signedUrl, $userId, $userEmail );
-        
-        return true;
+        try {
+            $this->verifyEmailHelper->validateEmailConfirmation( $signedUrl, $userId, $userEmail );
+            
+            return true;
+        } catch ( VerifyEmailExceptionInterface $e ) {
+            return false;
+        }
     }
     
     public function createToken( UserInterface $oUser ): array
