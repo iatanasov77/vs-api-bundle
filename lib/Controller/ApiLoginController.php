@@ -55,9 +55,9 @@ class ApiLoginController extends AbstractController
         ]);
     }
 
-    public function loginBySignature( $userId, Request $request ): Response
+    public function loginBySignature( $signature, Request $request ): Response
     {
-        $user = $this->usersRepository->find( $userId );
+        $user = $this->usersRepository->findOneBy( ['apiVerifySiganature' => $signature] );
         // Ensure the user exists in persistence
         if ( null === $user ) {
             return new JsonResponse([
@@ -66,16 +66,7 @@ class ApiLoginController extends AbstractController
             ]);
         }
         
-        try {
-            $this->apiManager->verifySignature( $request->getUri(), $user->getId(), $user->getEmail() );
-        } catch ( VerifyEmailExceptionInterface $e ) {
-            $this->addFlash( 'verify_email_error', $e->getReason() );
-            
-            return new JsonResponse([
-                'status'    => Status::STATUS_ERROR,
-                'message'   => $this->translator->trans( 'vs_api.messages.login_by_signature.invalid_signature', [], 'VSApiBundle' ),
-            ]);
-        }
+        // @TODO Check For Expired Signature
         
         $token  = $this->apiManager->createToken( $user );
         
