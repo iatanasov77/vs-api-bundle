@@ -1,3 +1,11 @@
+3.0.5	|	Release date: **01.08.2024**
+============================================
+* New Features and Improvements:
+  - Improve Security Configs.
+  - Add JWT Refresh Token Config.
+  - Create a Refresh Token in API Manager.
+
+
 3.0.4	|	Release date: **29.07.2024**
 ============================================
 * New Features and Improvements:
