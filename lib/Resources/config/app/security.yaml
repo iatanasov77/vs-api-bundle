@@ -16,16 +16,23 @@ security:
         ################################################################################################
         api_login:
             pattern: ^/api/login
-            stateless: true
+            stateless: '%env(bool:ENABLE_API_STATELESS_REQUESTS)%'
             provider: api_provider
             json_login:
                 check_path: /api/login_check
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
+        api_token_refresh:
+            pattern: ^/api/token/refresh
+            stateless: '%env(bool:ENABLE_API_STATELESS_REQUESTS)%'
+            provider: api_provider
+            refresh_jwt:
+                check_path: api_refresh_token
+        
         api_main:
             pattern:   ^/api
-            stateless: true
+            stateless: '%env(bool:ENABLE_API_STATELESS_REQUESTS)%'
             provider: api_provider
             jwt: ~
 
