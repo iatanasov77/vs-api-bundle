@@ -80,7 +80,9 @@ class ApiLoginController extends AbstractController
                 'email'     => $user->getEmail(),
                 'firstName' => $user->getInfo()->getFirstName(),
                 'lastName'  => $user->getInfo()->getLastName(),
-            ]
+            ],
+            
+            'refreshToken'  => $token['refreshToken'],
         ];
         
         return new JsonResponse([
