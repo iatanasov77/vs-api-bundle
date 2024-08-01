@@ -24,6 +24,9 @@ class ApiManager
     /** @var RefreshTokenManagerInterface */
     private $refreshTokenManager;
     
+    /** @var string */
+    private $refreshTokenTtl;
+    
     /** @var VerifyEmailHelperInterface */
     private $verifyEmailHelper;
     
@@ -32,12 +35,14 @@ class ApiManager
         JWTTokenManagerInterface $jwtManager,
         RefreshTokenGeneratorInterface $refreshTokenGenerator,
         RefreshTokenManagerInterface $refreshTokenManager,
+        string $refreshTokenTtl,
         VerifyEmailHelperInterface $helper
     ) {
         $this->tokenStorage             = $tokenStorage;
         $this->jwtManager               = $jwtManager;
         $this->refreshTokenGenerator    = $refreshTokenGenerator;
         $this->refreshTokenManager      = $refreshTokenManager;
+        $this->refreshTokenTtl          = $refreshTokenTtl;
         $this->verifyEmailHelper        = $helper;
     }
     
@@ -81,7 +86,7 @@ class ApiManager
         $tokenString    = $this->jwtManager->create( $oUser );
         
         /** EXAMPLE: https://github.com/markitosgv/JWTRefreshTokenBundle/issues/322 */
-        $refreshToken = $this->refreshTokenGenerator->createForUserWithTtl( $user, SELF::TTL );
+        $refreshToken = $this->refreshTokenGenerator->createForUserWithTtl( $oUser, $this->refreshTokenTtl );
         $this->refreshTokenManager->save( $refreshToken );
         
         return [

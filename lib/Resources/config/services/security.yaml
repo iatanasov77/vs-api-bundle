@@ -1,3 +1,6 @@
+parameters:
+    vs_api.refresh_token_ttl: '%env(int:REFRESH_TOKEN_TTL)%'
+
 services:
     _defaults:
         autowire: true
@@ -17,6 +20,7 @@ services:
             - '@lexik_jwt_authentication.jwt_manager'
             - '@gesdinet.jwtrefreshtoken.refresh_token_generator'
             - '@gesdinet.jwtrefreshtoken.refresh_token_manager'
+            - '%vs_api.refresh_token_ttl%'
             - '@symfonycasts.verify_email.helper'
     
     vs_api.jwt_created_listener:
