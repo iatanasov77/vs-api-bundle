@@ -92,7 +92,7 @@ class ApiManager
         return [
             'tokenString'   => $tokenString,
             'token'         => $this->jwtManager->parse( $tokenString ),
-            'refreshToken'  => $refreshToken,
+            'refreshToken'  => $refreshToken->getRefreshToken(),
         ];
     }
 }
