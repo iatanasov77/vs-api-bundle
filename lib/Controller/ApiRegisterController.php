@@ -12,7 +12,7 @@ use Sylius\Component\Resource\Factory\Factory;
 
 use Vankosoft\ApplicationBundle\Component\Status;
 use Vankosoft\UsersBundle\Security\UserManager;
-use Vankosoft\UsersBundle\Model\UserInterface;
+use Vankosoft\UsersBundle\Model\Interfaces\UserInterface;
 use Vankosoft\UsersBundle\Model\User;
 
 class ApiRegisterController extends AbstractController
