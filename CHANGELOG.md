@@ -1,3 +1,9 @@
+3.0.6	|	Release date: **22.08.2024**
+============================================
+* New Features:
+  - Move ApiUser Trait and Interface into Vankosoft Application Bundle.
+
+
 3.0.5	|	Release date: **01.08.2024**
 ============================================
 * New Features and Improvements:
