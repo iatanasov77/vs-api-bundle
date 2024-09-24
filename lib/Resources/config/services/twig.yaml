@@ -2,7 +2,8 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
-        public: true
         
     Vankosoft\ApiBundle\Twig\FunctionsExtension:
-        tags: ['twig.extension']
+        public: false
+        tags:
+            - { name: twig.extension }
