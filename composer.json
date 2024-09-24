@@ -28,7 +28,9 @@
         "symfony/mercure-bundle": "^0.3.8"
     },
     "suggest": {
-        "vankosoft/application": "This a Required Core Library."
+        "vankosoft/application": "This a Required Core Library.",
+        "cboden/ratchet": "If you want to create WebSocket Server.",
+        "react/zmq": "If you have 'zmq' PHP extension Loaded you can install this to create WebSocket Clients."
     },
     "conflict": {
         "doctrine/doctrine-bundle": "<1.3",

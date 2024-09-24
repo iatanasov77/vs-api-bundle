@@ -1,5 +1,6 @@
 imports:
     - { resource: services/security.yaml }
+    - { resource: services/twig.yaml }
     
 services:
     vankosoft.api.property_info.extractor.empty_list_extractor:
