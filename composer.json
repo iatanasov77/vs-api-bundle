@@ -1,7 +1,7 @@
 {
 	"name": "vankosoft/api-bundle",
     "type": "symfony-bundle",
-    "description": "Vankosoft Application Extension for Api Platform",
+    "description": "VankoSoft Symfony Application Extension - Api Bundle",
     "keywords": [
         "symfony",
         "vankosoft",
