@@ -10,6 +10,7 @@ use Symfony\Component\PropertyInfo\PropertyTypeExtractorInterface;
 use Symfony\Component\PropertyInfo\PropertyWriteInfo;
 use Symfony\Component\PropertyInfo\PropertyWriteInfoExtractorInterface;
 use Symfony\Component\PropertyInfo\Type;
+use Symfony\Component\TypeInfo\Type as TypeInfoType;
 use Symfony\Component\String\Inflector\EnglishInflector;
 use Symfony\Component\String\Inflector\InflectorInterface;
 
@@ -212,27 +213,9 @@ class ReflectionExtractor implements PropertyListExtractorInterface, PropertyTyp
     /**
      * @inheritdoc
      */
-    public function getTypeFromConstructor( string $class, string $property ): ?Type
+    public function getTypeFromConstructor( string $class, string $property ): ?TypeInfoType
     {
-        try {
-            $reflection = new \ReflectionClass( $class );
-        } catch ( \ReflectionException $e ) {
-            return null;
-        }
-        if ( ! $reflectionConstructor = $reflection->getConstructor() ) {
-            return null;
-        }
-        if ( ! $reflectionParameter = $this->getReflectionParameterFromConstructor( $property, $reflectionConstructor ) ) {
-            return null;
-        }
-        if ( ! $reflectionType = $reflectionParameter->getType() ) {
-            return null;
-        }
-        if ( ! $types = $this->extractFromReflectionType( $reflectionType, $reflectionConstructor->getDeclaringClass() ) ) {
-            return null;
-        }
-        
-        return $types;
+        return null;
     }
 
     private function getReflectionParameterFromConstructor(
