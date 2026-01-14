@@ -1,3 +1,14 @@
+4.0.0	|	Release date: **14.01.2026**
+============================================
+* New Features:
+  - Create a Twig Extension with helper functions.
+  - Move Functions Extension to Application Bundle.
+  - Update Package Title and Description.
+* Bug-Fixes:
+  - Fix Some Deprecation.
+  - Add a Missing Abstract Method and Update Reqired Packages Versions.
+
+
 3.0.6	|	Release date: **22.08.2024**
 ============================================
 * New Features:
