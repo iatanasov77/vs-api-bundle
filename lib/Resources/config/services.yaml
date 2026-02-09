@@ -6,5 +6,3 @@ services:
         class: Vankosoft\ApiBundle\PropertyInfo\Extractor\EmptyPropertyListExtractor
         tags:
             - { name: 'property_info.list_extractor', priority: -2000 }
-
-

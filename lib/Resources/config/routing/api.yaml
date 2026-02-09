@@ -19,4 +19,3 @@ vs_api_users_register:
         #_controller: Vankosoft\ApiBundle\Controller\ApiRegisterController::register
         _api_resource_class: '%vs_users.model.users.class%'
         _api_item_operation_name: users_register
-
