@@ -1,3 +1,9 @@
+4.0.1	|	Release date: **09.02.2026**
+============================================
+* Bug-Fixes:
+  - Fix New Swagger Documentation route of API Platform.
+
+
 4.0.0	|	Release date: **14.01.2026**
 ============================================
 * New Features:
