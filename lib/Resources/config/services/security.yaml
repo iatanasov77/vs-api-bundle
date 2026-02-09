@@ -57,5 +57,3 @@ services:
             - {
                 registerRole: '%vs_users.register_role%'
             }
-
-

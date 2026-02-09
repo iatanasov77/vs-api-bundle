@@ -47,5 +47,3 @@ resources:
             updatedAt:
                 identifier: false
                 writeable: false
-
-
