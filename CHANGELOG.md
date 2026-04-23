@@ -1,3 +1,9 @@
+4.0.2	|	Release date: **23.04.2026**
+============================================
+* New Features:
+  - Add a Home Page Template for API Application  Default Controller.
+
+
 4.0.1	|	Release date: **09.02.2026**
 ============================================
 * Bug-Fixes:
