@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale|slice(0, 2) }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ applicationTitle }}</title>
+</head>
+<body>
+    <h1>{{ applicationTitle }}</h1>
+    <p>
+        {% set appHost = oApplication.hostname ~ '/api/api-docs' %}
+        <a href="http://{{ appHost }}">API Docs</a>
+    </p>
+</body>
+</html>
