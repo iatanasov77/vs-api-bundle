@@ -1,3 +1,9 @@
+4.1.0	|	Release date: **15.09.2026**
+============================================
+* New Features:
+  - Update Requirement Versions and Add Symfony Messendger as Requirement.
+
+
 4.0.2	|	Release date: **23.04.2026**
 ============================================
 * New Features:
